@@ -1,0 +1,23 @@
+{
+  "name": "contact-app",
+  "version": "1.0.0",
+  "description": "Aplikasi kontak sederhana yang dimasukan ke dalam file json",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node app"
+  },
+  "keywords": [],
+  "author": "infinitedim",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "validator": "^13.7.0",
+    "yargs": "16.2.0"
+  }
+}
