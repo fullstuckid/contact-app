@@ -56,8 +56,11 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules
-bower_components
+node_modules/
+bower_components/
+
+app.js
+contacts.js
 
 *.sublime*
 
