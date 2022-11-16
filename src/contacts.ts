@@ -1,35 +1,39 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import validator from "validator";
 
+interface ContactInterface {
+  nama: any;
+  noHP: any;
+}
+
 const path = "./data";
+const file = "./data/contacts.json";
 
 if (!existsSync(path)) {
   mkdirSync(path);
 }
 
-const file = "./data/contacts.json";
-
 if (!existsSync(file)) {
   writeFileSync(file, "[]", "utf-8");
 }
 
-const loadContact = () => {
+const loadContact = (): any => {
   const files = readFileSync(file, "utf-8");
   const contacts = JSON.parse(files);
   return contacts;
 };
 
-const saveContact = (nama: any, email: any, noHP: any) => {
+const saveContact = (nama: any, email: any, noHP: any): false | undefined => {
   const contact = {
     nama,
     email,
     noHP,
   };
 
-  const contacts = loadContact();
+  const contacts: any = loadContact();
 
-  const duplikat = contacts.find(
-    (kontak: { nama: any }) => kontak.nama === nama
+  const duplikat: any = contacts.find(
+    (kontak: { nama: any }) => kontak.nama === nama,
   );
 
   if (duplikat) {
@@ -56,21 +60,21 @@ const saveContact = (nama: any, email: any, noHP: any) => {
   console.info("Terimakasih sudah memasukan data.");
 };
 
-const listContact = () => {
+const listContact = (): void => {
   console.log("Daftar kontak");
   const contacts = loadContact();
 
-  contacts.forEach((contact: { nama: any; noHP: any }, i: number) => {
+  contacts.forEach((contact: ContactInterface, i: number): void => {
     console.log(`${i + 1}. ${contact.nama} - ${contact.noHP}`);
   });
 };
 
-const detailContact = (nama: any) => {
-  const contacts = loadContact();
+const detailContact = (nama: any): false | undefined => {
+  const contacts: any = loadContact();
 
-  const contact = contacts.find(
+  const contact: any = contacts.find(
     (kontak: { nama: string }) =>
-      kontak.nama.toLowerCase() === nama.toLowerCase()
+      kontak.nama.toLowerCase() === nama.toLowerCase(),
   );
 
   if (contact) {
@@ -85,12 +89,12 @@ const detailContact = (nama: any) => {
   }
 };
 
-const deleteContact = (nama: any) => {
+const deleteContact = (nama: any): false | undefined => {
   const contacts = loadContact();
 
   const newContact = contacts.filter(
     (contact: { nama: string }) =>
-      contact.nama.toLowerCase() !== nama.toLowerCase()
+      contact.nama.toLowerCase() !== nama.toLowerCase(),
   );
 
   if (contacts.legth === newContact.length) {

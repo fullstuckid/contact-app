@@ -5,7 +5,7 @@ import {
   listContact,
   detailContact,
   deleteContact,
-} from "./contacts.js";
+} from "./contacts";
 
 yargs(hideBin(process.argv))
   .command({
